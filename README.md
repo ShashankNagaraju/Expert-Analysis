@@ -1,4 +1,4 @@
-# Expert Call Analyzer - Hasamex AI Engineer Case Study
+# Expert Call Analyzer
 
 A Streamlit app that analyzes expert-call transcripts against an interview
 guide: it answers each question per expert with verbatim, timestamped
