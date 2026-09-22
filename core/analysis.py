@@ -1,28 +1,7 @@
-"""
-All the "AI" logic for the case:
-
-1. answer_question_for_expert  -> answers one interview-guide question for one
-   expert, grounded in that expert's own transcript, with a verbatim quote +
-   timestamp for every claim.
-2. verify_evidence              -> checks every quote the model returned
-   actually appears in the source transcript (anti-hallucination guardrail).
-3. synthesize_across_experts     -> given the three per-expert answers to the
-   same question, finds common themes and disagreements.
-4. answer_freeform               -> answers an arbitrary user question against
-   all three transcripts at once, with citations.
-
-Design choice: with only 3 short transcripts, the full transcript text
-(~1-2k tokens each) is passed directly in the prompt rather than retrieved
-via embeddings. This is simpler and more accurate at this scale. See
-README.md "Scaling to 30+ transcripts" for how this changes.
-"""
 import re
 from .llm import call_json
 
-# ---------------------------------------------------------------------------
 # Prompts
-# ---------------------------------------------------------------------------
-
 PER_EXPERT_SYSTEM = """You are a careful market-research analyst assistant.
 You will be given ONE expert's transcript (tagged with timestamps) and ONE
 interview-guide question.
@@ -93,11 +72,6 @@ Respond ONLY with a JSON object of this exact shape:
   ]
 }
 """
-
-
-# ---------------------------------------------------------------------------
-# Core functions
-# ---------------------------------------------------------------------------
 
 def _normalize(s: str) -> str:
     return re.sub(r"\s+", " ", s.strip().lower())
