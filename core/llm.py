@@ -1,10 +1,3 @@
-"""
-Thin wrapper around the Google Gemini API (google-genai SDK).
-
-Reads GEMINI_API_KEY from the environment (or from st.session_state, set via
-the sidebar in app.py). Uses JSON mode so responses can be parsed reliably
-into the schemas used by core/analysis.py.
-"""
 import os
 import json
 from google import genai
