@@ -16,17 +16,16 @@ DEFAULT_TRANSCRIPTS = [
     os.path.join(DATA_DIR, "Transcript_3_UK.txt"),
 ]
 
-# ---------------------------------------------------------------------------
+
 # Session state
-# ---------------------------------------------------------------------------
 if "transcripts" not in st.session_state:
     st.session_state.transcripts = None
 if "questions" not in st.session_state:
     st.session_state.questions = None
 if "per_question" not in st.session_state:
-    st.session_state.per_question = {}   # question -> {expert_name: result_dict}
+    st.session_state.per_question = {}  
 if "synthesis" not in st.session_state:
-    st.session_state.synthesis = {}      # question -> synthesis_dict
+    st.session_state.synthesis = {}      
 
 
 def load_default_data():
@@ -39,9 +38,7 @@ def load_default_data():
     st.session_state.transcripts = transcripts
 
 
-# ---------------------------------------------------------------------------
 # Sidebar: data + API key
-# ---------------------------------------------------------------------------
 st.sidebar.title("Setup")
 
 api_key_input = st.sidebar.text_input("Gemini API key", type="password",
@@ -85,9 +82,7 @@ st.sidebar.caption(
     "unverified quotes are flagged, never silently trusted."
 )
 
-# ---------------------------------------------------------------------------
 # Header
-# ---------------------------------------------------------------------------
 st.title("🤖 Expert Call Analyzer")
 st.caption("Hasamex AI Engineer case study — European Robotic Surgery Market")
 
@@ -101,9 +96,7 @@ with st.expander("Loaded experts", expanded=False):
 
 tab1, tab2, tab3 = st.tabs(["📋 Per-Question Answers", "🔍 Cross-Expert Themes", "💬 Ask Across Transcripts"])
 
-# ---------------------------------------------------------------------------
 # Tab 1: Per-question answers
-# ---------------------------------------------------------------------------
 with tab1:
     st.subheader("Answer the interview guide, per expert")
     question = st.selectbox("Interview guide question", questions, key="q1")
@@ -158,9 +151,7 @@ with tab1:
     else:
         st.info("Click 'Analyze this question' to generate grounded answers for each expert.")
 
-# ---------------------------------------------------------------------------
 # Tab 2: Cross-expert synthesis
-# ---------------------------------------------------------------------------
 with tab2:
     st.subheader("Common themes and disagreements across experts")
     question2 = st.selectbox("Interview guide question", questions, key="q2")
@@ -199,9 +190,7 @@ with tab2:
             else:
                 st.write("No notable disagreements identified.")
 
-# ---------------------------------------------------------------------------
 # Tab 3: Free-form Q&A
-# ---------------------------------------------------------------------------
 with tab3:
     st.subheader("Ask any question across all transcripts")
     user_q = st.text_input("Your question", placeholder="e.g. Do all three experts agree that training affects ROI?")
