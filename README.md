@@ -112,7 +112,7 @@ read everything. That stops working cleanly at 30+ transcripts:
   reconciles cluster-level summaries into one set of themes/disagreements.
 - **Free-form Q&A becomes standard RAG**: embed the question, retrieve
   relevant chunks across all 30+ transcripts, answer only from those chunks
-  — same verification step as today, just retrieval instead of "everything
+  same verification step as today, just retrieval instead of "everything
   in context."
 - **Caching**: persist per-expert per-question answers (they don't change
   once computed) so re-running synthesis or adding a 31st expert doesn't
