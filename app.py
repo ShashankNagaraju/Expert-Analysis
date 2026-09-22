@@ -176,7 +176,6 @@ questions = st.session_state.questions
 # Masthead
 st.markdown("""
 <div class="masthead">
-    <div class="masthead-eyebrow">Hasamex &middot; AI Engineer Case Study</div>
     <h1>Expert Call Analyzer</h1>
 </div>
 """, unsafe_allow_html=True)
