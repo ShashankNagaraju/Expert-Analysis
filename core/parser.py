@@ -1,30 +1,3 @@
-"""
-Parses the expert-call transcripts into a structured, timestamped format.
-
-Expected input format (matches the provided sample transcripts):
-
-    Expert 1 – Dr. Jean Martin
-    Role: Head of Urology
-    Market: France
-
-    00:00
-    Interviewer: Thanks for joining...
-
-    00:18
-    Dr. Martin: Adoption is growing...
-
-Each transcript is turned into:
-    {
-        "name": "Dr. Jean Martin",
-        "role": "Head of Urology",
-        "market": "France",
-        "segments": [
-            {"timestamp": "00:00", "speaker": "Interviewer", "text": "..."},
-            {"timestamp": "00:18", "speaker": "Dr. Martin", "text": "..."},
-            ...
-        ]
-    }
-"""
 import re
 
 TIMESTAMP_RE = re.compile(r"^(\d{1,2}:\d{2})$")
